@@ -3,6 +3,12 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { SimpleHeader } from "../components/SimpleHeader";
+import {
+  MdHome as MdHomeIcon,
+  MdFavoriteBorder,
+  MdOutlineSettings,
+  MdOutlineContacts,
+} from "react-icons/md";
 
 const Home: NextPage = () => {
   const spaces_name = new Array<string>(100);
@@ -15,10 +21,26 @@ const Home: NextPage = () => {
       header={
         <SimpleHeader
           links={[
-            { link: "/", label: "Home" },
-            { link: "/Contact", label: "Contact" },
-            { link: "/Favorites", label: "Favorites" },
-            { link: "/Settings", label: "Settings" },
+            {
+              link: "/",
+              label: "Home",
+              leftIcon: <MdHomeIcon size={"1.5rem"} />,
+            },
+            {
+              link: "/Contact",
+              label: "Contact",
+              leftIcon: <MdOutlineContacts size={"1.5rem"} />,
+            },
+            {
+              link: "/Favorites",
+              label: "Favorites",
+              leftIcon: <MdFavoriteBorder size={"1.5rem"} />,
+            },
+            {
+              link: "/Settings",
+              label: "Settings",
+              leftIcon: <MdOutlineSettings size={"1.5rem"} />,
+            },
           ]}
         />
       }
