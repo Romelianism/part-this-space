@@ -63,11 +63,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface HeaderSimpleProps {
+interface SimpleHeaderProps {
   links: { link: string; label: string; leftIcon?: React.ReactNode }[];
 }
 
-export function HeaderSimple({ links }: HeaderSimpleProps) {
+export function SimpleHeader({ links }: SimpleHeaderProps) {
   const [opened, toggleOpened] = useBooleanToggle(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();

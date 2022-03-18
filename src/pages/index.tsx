@@ -2,7 +2,7 @@ import { AppShell, Grid, Image } from "@mantine/core";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { HeaderSimple as SimpleHeader } from "../components/SimpleHeader";
+import { SimpleHeader } from "../components/SimpleHeader";
 
 const Home: NextPage = () => {
   const spaces_name = new Array<string>(100);
