@@ -13,13 +13,11 @@ const useStyles = createStyles((theme, params, getRef) => ({
   links: {
     ref: getRef("links"),
     [theme.fn.smallerThan("xs")]: {
-      [`& .${getRef("link")}`]: {
-        fontSize: 0,
-      },
+      [`& .${getRef("linkText")}`]: { fontSize: "0px" },
     },
   },
-  link: {
-    ref: getRef("link"),
+  linkText: {
+    ref: getRef("linkText"),
   },
 }));
 
@@ -40,14 +38,13 @@ export function SimpleHeader({ links }: HeaderSimpleProps) {
 
   const items = links.map(({ link, label, activeIcon, inactiveIcon }) => (
     <Button
-      className={classes.link}
       onClick={() => router.push(link)}
       title={label}
       key={label}
       leftIcon={active === link ? activeIcon : inactiveIcon}
       variant={active === link ? "light" : "subtle"}
     >
-      {label}
+      <span className={classes.linkText}> {label} </span>
     </Button>
   ));
 
