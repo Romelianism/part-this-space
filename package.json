@@ -1,14 +1,14 @@
 {
-  "name": "part-of-this",
+  "name": "part-this-space",
   "author": {
     "name": "Romelianism"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Romelianism/PartOfThis.git"
+    "url": "https://github.com/Romelianism/part-this-space.git"
   },
   "bugs": {
-    "url": "https://github.com/Romelianism/PartOfThis/issues"
+    "url": "https://github.com/Romelianism/part-this-space/issues"
   },
   "version": "0.1.0",
   "private": true,
