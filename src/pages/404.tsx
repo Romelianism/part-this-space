@@ -15,8 +15,8 @@ const useStyles = createStyles((theme) => ({
   verticalCenter: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center" /* align horizontal */,
-    alignItems: "baseline" /* align vertical */,
+    justifyContent: "center" /* align vertical */,
+    alignItems: "baseline" /* align horizontal */,
   },
 
   title: {
