@@ -13,7 +13,7 @@ const useStyles = createStyles((theme, params, getRef) => ({
   links: {
     ref: getRef("links"),
     [theme.fn.smallerThan("xs")]: {
-      [`& .${getRef("linkText")}`]: { fontSize: "0px" },
+      [`& .${getRef("linkText")}`]: { display: "none" },
     },
   },
   linkText: {
