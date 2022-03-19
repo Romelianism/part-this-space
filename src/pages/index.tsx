@@ -20,8 +20,8 @@ const Home: NextPage = () => {
 
       <Grid>
         {spaces_name.map((value, i) => {
-          const width = "200";
-          const height = "100";
+          const width = 200 + Math.floor(Math.random() * 100 - 50);
+          const height = 100 + Math.floor(Math.random() * 100 - 50);
           return (
             <Grid.Col xs={6} md={4} lg={3} xl={2} key={value}>
               <Link href={`/space/${value}`}>
