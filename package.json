@@ -19,10 +19,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mantine/core": "^4.0.5",
-    "@mantine/hooks": "^4.0.5",
-    "@mantine/next": "^4.0.5",
-    "@mui/icons-material": "^5.5.1",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
