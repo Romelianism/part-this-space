@@ -42,6 +42,7 @@ export function SimpleHeader({ links }: HeaderSimpleProps) {
     <Button
       className={classes.link}
       onClick={() => router.push(link)}
+      title={label}
       key={label}
       leftIcon={active === link ? activeIcon : inactiveIcon}
       variant={active === link ? "light" : "subtle"}
