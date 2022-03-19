@@ -1,84 +1,50 @@
-import React, { useState } from "react";
-import {
-  createStyles,
-  Header,
-  Container,
-  Group,
-  Burger,
-  Button,
-} from "@mantine/core";
-import { useBooleanToggle } from "@mantine/hooks";
+import React from "react";
+import { createStyles, Header, Container, Group, Button } from "@mantine/core";
 import { useRouter } from "next/router";
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles((theme, params, getRef) => ({
   header: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     height: "100%",
   },
 
   links: {
+    ref: getRef("links"),
     [theme.fn.smallerThan("xs")]: {
-      display: "none",
+      [`& .${getRef("link")}`]: {
+        fontSize: 0,
+      },
     },
   },
-
-  burger: {
-    [theme.fn.largerThan("xs")]: {
-      display: "none",
-    },
-  },
-
   link: {
-    display: "block",
-    lineHeight: 1,
-    padding: "8px 12px",
-    borderRadius: theme.radius.sm,
-    textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
-
-    "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
-    },
-  },
-
-  linkActive: {
-    "&, &:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.fn.rgba(theme.colors[theme.primaryColor][9], 0.25)
-          : theme.colors[theme.primaryColor][0],
-      color:
-        theme.colors[theme.primaryColor][theme.colorScheme === "dark" ? 3 : 7],
-    },
+    ref: getRef("link"),
   },
 }));
 
-interface SimpleHeaderProps {
-  links: { link: string; label: string; leftIcon?: React.ReactNode }[];
+interface HeaderSimpleProps {
+  links: {
+    link: string;
+    label: string;
+    activeIcon?: React.ReactNode;
+    inactiveIcon?: React.ReactNode;
+  }[];
 }
 
-export function SimpleHeader({ links }: SimpleHeaderProps) {
-  const [opened, toggleOpened] = useBooleanToggle(false);
-  const [active, setActive] = useState(links[0].link);
-  const { classes, cx } = useStyles();
+export function SimpleHeader({ links }: HeaderSimpleProps) {
   const router = useRouter();
+  const active = links.filter((value) => value.link === router.asPath)?.[0]
+    ?.link;
+  const { classes } = useStyles();
 
-  const items = links.map(({ link, label, leftIcon }) => (
+  const items = links.map(({ link, label, activeIcon, inactiveIcon }) => (
     <Button
-      key={label}
+      className={classes.link}
       onClick={() => router.push(link)}
-      leftIcon={leftIcon}
-      variant={active == link ? "light" : "subtle"}
+      key={label}
+      leftIcon={active === link ? activeIcon : inactiveIcon}
+      variant={active === link ? "light" : "subtle"}
     >
       {label}
     </Button>
@@ -90,15 +56,6 @@ export function SimpleHeader({ links }: SimpleHeaderProps) {
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-
-        <Burger
-          opened={opened}
-          onClick={() => toggleOpened()}
-          className={classes.burger}
-          size="sm"
-        >
-          {items}
-        </Burger>
       </Container>
     </Header>
   );

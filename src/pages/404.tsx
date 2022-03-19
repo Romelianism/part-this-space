@@ -9,11 +9,14 @@ import {
   SimpleGrid,
 } from "@mantine/core";
 import Link from "next/link";
+import HomeLayout from "../components/HomeLayout";
 
 const useStyles = createStyles((theme) => ({
-  root: {
-    paddingTop: 80,
-    paddingBottom: 80,
+  verticalCenter: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center" /* align horizontal */,
+    alignItems: "baseline" /* align vertical */,
   },
 
   title: {
@@ -38,7 +41,7 @@ export function NotFoundImage() {
   const { classes } = useStyles();
 
   return (
-    <Container className={classes.root}>
+    <HomeLayout>
       <SimpleGrid
         spacing={80}
         cols={2}
@@ -48,12 +51,12 @@ export function NotFoundImage() {
           alt="404"
           src="https://img.freepik.com/free-vector/error-404-concept-illustration_114360-1811.jpg?t=st=1647590848~exp=1647591448~hmac=02d29282190ebd386f0952fc4e3c798fd4c45d389b0b5f59903e0f582be09ff1"
         />
-        <div>
+        <div className={classes.verticalCenter}>
           <Title className={classes.title}>Something is not right...</Title>
           <Text color="dimmed" size="lg">
             Page you are trying to open does not exist. You may have mistyped
             the address, or the page has been moved to another URL. If you think
-            this is an error report developer.
+            this is an error report to developer.
           </Text>
           <Link href="/" passHref>
             <Button
@@ -68,7 +71,7 @@ export function NotFoundImage() {
           </Link>
         </div>
       </SimpleGrid>
-    </Container>
+    </HomeLayout>
   );
 }
 export default NotFoundImage;
