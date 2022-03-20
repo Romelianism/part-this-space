@@ -10,6 +10,7 @@ import {
 } from "@mantine/core";
 import Link from "next/link";
 import HomeLayout from "../components/HomeLayout";
+import Head from "next/head";
 
 const useStyles = createStyles((theme) => ({
   verticalCenter: {
@@ -42,6 +43,9 @@ export function NotFoundImage() {
 
   return (
     <HomeLayout>
+      <Head>
+        <title>404</title>
+      </Head>
       <SimpleGrid
         spacing={80}
         cols={2}
