@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import HomeLayout from "../components/HomeLayout";
+import { manifest } from "../config";
 
 const Home: NextPage = () => {
   const spaces_name = new Array<string>(100);
@@ -13,7 +14,7 @@ const Home: NextPage = () => {
   return (
     <HomeLayout>
       <Head>
-        <title>Home</title>
+        <title>{manifest.name}</title>
       </Head>
 
       <Grid>
