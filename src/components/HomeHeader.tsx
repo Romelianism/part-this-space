@@ -21,7 +21,7 @@ const useStyles = createStyles((theme, params, getRef) => ({
   },
 }));
 
-interface HeaderSimpleProps {
+interface HomeHeaderProps {
   links: {
     link: string;
     label: string;
@@ -30,7 +30,7 @@ interface HeaderSimpleProps {
   }[];
 }
 
-export function SimpleHeader({ links }: HeaderSimpleProps) {
+export function HomeHeader({ links }: HomeHeaderProps) {
   const router = useRouter();
   const active = links.filter((value) => value.link === router.asPath)?.[0]
     ?.link;

@@ -9,14 +9,14 @@ import {
   MdOutlineSettings,
   MdSettings,
 } from "react-icons/md";
-import { SimpleHeader } from "./SimpleHeader";
+import { HomeHeader } from "./HomeHeader";
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   const iconSize = 24;
   return (
     <AppShell
       header={
-        <SimpleHeader
+        <HomeHeader
           links={[
             {
               link: "/",
