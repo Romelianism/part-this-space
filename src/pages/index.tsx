@@ -2,8 +2,8 @@ import { Grid } from "@mantine/core";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import HomeLayout from "../components/HomeLayout";
+import LinkWrap from "../components/utils/LinkWrap";
 import { manifest } from "../config";
 
 const Home: NextPage = () => {
@@ -24,17 +24,15 @@ const Home: NextPage = () => {
           const height = 100 + Math.floor(Math.random() * 100 - 50);
           return (
             <Grid.Col xs={6} md={4} lg={3} xl={2} key={value}>
-              <Link href={`/space/${value}`}>
-                <a>
-                  <Image
-                    src={`https://picsum.photos/${width}/${height}`}
-                    alt={value}
-                    width={width}
-                    height={height}
-                    layout="responsive"
-                  />
-                </a>
-              </Link>
+              <LinkWrap href={`/space/${value}`}>
+                <Image
+                  src={`https://picsum.photos/${width}/${height}`}
+                  alt={value}
+                  width={width}
+                  height={height}
+                  layout="responsive"
+                />
+              </LinkWrap>
             </Grid.Col>
           );
         })}
