@@ -1,4 +1,4 @@
-import { Grid } from "@mantine/core";
+import { Box, Grid } from "@mantine/core";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -25,13 +25,19 @@ const Home: NextPage = () => {
           return (
             <Grid.Col xs={6} md={4} lg={3} xl={2} key={value}>
               <LinkWrap href={`/space/${value}`}>
-                <Image
-                  src={`https://picsum.photos/${width}/${height}`}
-                  alt={value}
-                  width={width}
-                  height={height}
-                  layout="responsive"
-                />
+                <Box
+                  sx={(theme) => ({
+                    backgroundColor: theme.colors.gray[0],
+                  })}
+                >
+                  <Image
+                    src={`https://picsum.photos/${width}/${height}`}
+                    alt={value}
+                    width={width}
+                    height={height}
+                    layout="responsive"
+                  />
+                </Box>
               </LinkWrap>
             </Grid.Col>
           );
