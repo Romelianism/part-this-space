@@ -28,6 +28,8 @@ const Home: NextPage = () => {
                 <Box
                   sx={(theme) => ({
                     backgroundColor: theme.colors.gray[0],
+                    borderRadius: theme.spacing.xs,
+                    overflow: "hidden",
                   })}
                 >
                   <Image
