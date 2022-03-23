@@ -1,6 +1,7 @@
-import { Grid, Image } from "@mantine/core";
+import { Grid } from "@mantine/core";
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import HomeLayout from "../components/HomeLayout";
 import { manifest } from "../config";
@@ -27,11 +28,10 @@ const Home: NextPage = () => {
                 <a>
                   <Image
                     src={`https://picsum.photos/${width}/${height}`}
+                    alt={value}
                     width={width}
                     height={height}
-                    alt={value}
-                    radius="md"
-                    withPlaceholder
+                    layout="responsive"
                   />
                 </a>
               </Link>
