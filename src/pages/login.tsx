@@ -81,40 +81,48 @@ const AuthenticationForm: NextPage = () => {
             onSubmit={form.onSubmit(
               async ({ email, name, password, terms }) => {
                 if (!auth) return;
-                const userCredential = await (type === "login"
-                  ? signInWithEmailAndPassword(auth!, email, password)
-                      .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        setModal({
-                          title: errorCode,
-                          message: errorMessage,
-                        });
-                        return undefined;
-                      })
-                      .then(() => {
-                        if (router.asPath === "/login") router.back();
-                      })
-                  : createUserWithEmailAndPassword(auth!, email, password).then(
-                      (UserCredential) => {
-                        sendEmailVerification(UserCredential.user);
-                        setModal({
-                          title: "Check Your Email",
-                          message: "Go to your new mail and click verify",
-                          back: true,
-                        });
-                        return UserCredential;
-                      }
-                    )
-                ).catch((error) => {
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-                  setModal({
-                    title: errorCode,
-                    message: errorMessage,
+                if (type === "login") {
+                  const userCredential = await signInWithEmailAndPassword(
+                    auth!,
+                    email,
+                    password
+                  ).catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setModal({
+                      title: errorCode,
+                      message: errorMessage,
+                    });
                   });
-                  return undefined;
-                });
+
+                  if (!userCredential) return;
+
+                  router.back();
+                } else {
+                  const user = (
+                    await createUserWithEmailAndPassword(
+                      auth!,
+                      email,
+                      password
+                    ).catch((error) => {
+                      const errorCode = error.code;
+                      const errorMessage = error.message;
+                      setModal({
+                        title: errorCode,
+                        message: errorMessage,
+                      });
+                      return undefined;
+                    })
+                  )?.user;
+                  if (!user) return;
+
+                  sendEmailVerification(user);
+                  setModal({
+                    title: "Please verify your email",
+                    message: `We just sent an email to ${user.email}. Click the link in the email to verify your account.`,
+                    back: true,
+                  });
+                }
                 forceUpdate();
               }
             )}
